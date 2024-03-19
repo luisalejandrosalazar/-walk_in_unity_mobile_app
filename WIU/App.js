@@ -6,6 +6,7 @@ import HomePage from "./src/screens/HomePage";
 import CartPage from './src/screens/CartPage';
 import UserPage from './src/screens/UserPage';
 import LoginPage from './src/screens/LoginPage';
+import SignUpPage from './src/screens/SignUpPage';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +35,11 @@ export default function App() {
         <Stack.Screen
           name="UserPage"
           component={UserPage}
+          initialParams={{}}
+        />
+        <Stack.Screen
+          name="SignUpPage"
+          component={SignUpPage}
           initialParams={{}}
         />
       </Stack.Navigator>

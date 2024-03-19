@@ -111,7 +111,7 @@ export default function LoginPage({ route }) {
         <TouchableOpacity>
           <Text style={styles.label}>Forgot Password</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("SignupPage")}>
+        <TouchableOpacity onPress={() => navigation.navigate("SignUpPage")}>
           <Text style={styles.label}>Sign Up</Text>
         </TouchableOpacity>
       </View>
