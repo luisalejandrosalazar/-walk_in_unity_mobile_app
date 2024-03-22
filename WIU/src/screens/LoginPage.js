@@ -9,8 +9,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import app from "../../firebase";
 
-
+const auth = getAuth(app);
 
 
 export default function LoginPage({ route }) {
@@ -55,7 +57,7 @@ export default function LoginPage({ route }) {
   // Use useEffect to navigate after the component has rendered
   useEffect(() => {
     if (loggedIn) {
-      navigation.navigate("InventoryPage");
+      navigation.navigate("HomePage");
       setLoggedIn(false);
     }
   }, [loggedIn]);
@@ -92,7 +94,7 @@ export default function LoginPage({ route }) {
         ></TextInput>
       </View>
       <Text style={{ color: "red" }}>{isError}</Text>
-      <TouchableOpacity style={{ marginTop: 40 }} onPress={() => navigation.navigate("HomePage")}>
+      <TouchableOpacity style={{ marginTop: 40 }} onPress={signInUser}>
         <View style={styles.signInButton}>
           <Text style={{ color: "white", fontSize: 15 }}>Sign In</Text>
         </View>

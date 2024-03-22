@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import app from "../../firebase";
 
 import {
   StyleSheet,
@@ -10,6 +12,8 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+
+const auth = getAuth(app);
 
 export default function SignUpPage() {
 
@@ -35,13 +39,23 @@ export default function SignUpPage() {
   };
 
   const signUp = async () => {
-    // if (email == "") {
-    //   return <Text>Please Enter Email</Text>;
-    // }
-    // if (password == "") {
-    //   return <Text>Please Enter Password</Text>;
-    // } else {
-    
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up
+        const user = userCredential.user;
+        // setUserId(user.email);
+        console.log("hello");
+        // console.log(user.email);
+        console.log("Signup Successful");
+        navigation.navigate("LoginPage");
+
+      })
+      .catch((error) => {
+        console.log("signup failed");
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError(errorMessage);
+      });
   };
   return (
     <View style={styles.signupPage}>
