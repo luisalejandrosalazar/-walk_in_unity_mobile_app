@@ -11,6 +11,8 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import app from "../../firebase";
+import { useContext } from 'react';
+import { UserContext } from "../../userContext";
 
 const auth = getAuth(app);
 
@@ -18,17 +20,18 @@ const auth = getAuth(app);
 export default function LoginPage({ route }) {
   //const { setUserEmail } = route.params;
   const [loggedIn, setLoggedIn] = useState(false);
-  const [emailId, setEmailId] = useState("");
-  const [password, setPassword] = useState("abcdefg");
+  const [emailId, setEmailId] = useState("johncena@gmail.com");
+  const [password, setPassword] = useState("123456789");
   const [isError, setError] = useState(null);
   const navigation = useNavigation();
+  const { setUserEmail } = useContext(UserContext);
 
   const signInUser = async () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, emailId, password);
       const user = userCredential.user;
       console.log("Logged in " + user.email);
-      //setUserEmail(user.email);
+      setUserEmail(user.email); // Set the user's email
       setLoggedIn(true); // Trigger navigation in useEffect
     } catch (error) {
       const errorCode = error.code;

@@ -1,16 +1,11 @@
 import React from "react";
 import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { useContext } from 'react';
 import { CartContext } from "../../cartContext";
 
-const ItemCard = ({ data }) => {
-  const navigation = useNavigation();
-  const { cart, setCart } = useContext(CartContext);
-
-  const addToCart = () => {
-    setCart([...cart, data]);
-  };
+const CartCard = ({ data }) => {
+    console.log('cartCard data',data);
+    const { removeFromCart } = useContext(CartContext);
   return (
     <View style={styles.container}>
       <Image
@@ -29,8 +24,8 @@ const ItemCard = ({ data }) => {
         <Text style={styles.typeFont}>Size US: {data.sizeUS}</Text>
       </View>
       
-      <TouchableOpacity style={styles.button} onPress={addToCart}>
-        <Text style={styles.buttonText}>Add to Cart</Text>
+      <TouchableOpacity style={styles.button} onPress={() => removeFromCart(data)}>
+        <Text style={styles.buttonText}>Remove From Cart</Text>
       </TouchableOpacity>
     </View>
   );
@@ -103,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ItemCard;
+export default CartCard;

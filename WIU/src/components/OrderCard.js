@@ -1,16 +1,12 @@
 import React from "react";
 import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { useContext } from 'react';
 import { CartContext } from "../../cartContext";
 
-const ItemCard = ({ data }) => {
-  const navigation = useNavigation();
-  const { cart, setCart } = useContext(CartContext);
+const OrderCard = ({ data }) => {
+  console.log('cartCard data',data);
+  const { removeFromCart } = useContext(CartContext);
 
-  const addToCart = () => {
-    setCart([...cart, data]);
-  };
   return (
     <View style={styles.container}>
       <Image
@@ -18,31 +14,21 @@ const ItemCard = ({ data }) => {
         style={styles.cardImage}
       />
       <View style={styles.cardText}>
-        {/* Title (Left Aligned) */}
         <Text style={styles.titleFont}>{data.name}</Text>
-        {/* Price (Right Aligned) */}
         <Text style={styles.priceFont}>${data.price}</Text>
-        
-      </View>
-      <View style={styles.cardText}>
         <Text style={styles.typeFont}>{data.gender}</Text>
         <Text style={styles.typeFont}>Size US: {data.sizeUS}</Text>
       </View>
-      
-      <TouchableOpacity style={styles.button} onPress={addToCart}>
-        <Text style={styles.buttonText}>Add to Cart</Text>
-      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    
-    height: 350,
+    flexDirection: "row", // Change to row to place items side by side
+    alignItems: "center", // Align items vertically
+    height: 150,
     marginTop: 5,
-    display: "flex",
-    flexDirection: "column",
     width: "100%",
     backgroundColor: "#FFFFFF",
     borderRadius: 5,
@@ -58,30 +44,17 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   cardImage: {
-    width: "100%",
-    height: "70%",
+    width: "50%",
+    height: "100%", // Take up full height of the card
     margin: 1,
     marginBottom: 10,
   },
   cardText: {
-    width: "90%",
+    width: "50%", // Take up remaining 50% of the width
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "space-between", // Adjust alignment
     marginBottom: 1,
-  },
-  button: {
-    width: "100%",
-    backgroundColor: "#000",
-    borderRadius: 5,
-    padding: 5,
-    justifyContent: "center",
-    alignItems: "center",
-    height: 35,
-  },
-  buttonText: {
-    color: "#FFFFFF",
-    fontWeight: "bold",
   },
   titleFont: {
     color: "#000000",
@@ -103,4 +76,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ItemCard;
+export default OrderCard;

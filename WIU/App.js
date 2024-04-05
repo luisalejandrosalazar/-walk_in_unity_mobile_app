@@ -7,11 +7,15 @@ import CartPage from './src/screens/CartPage';
 import UserPage from './src/screens/UserPage';
 import LoginPage from './src/screens/LoginPage';
 import SignUpPage from './src/screens/SignUpPage';
+import { CartProvider } from './cartContext';
+import { UserProvider } from './userContext';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
+    <UserProvider>
+    <CartProvider>
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="LoginPage"
@@ -30,7 +34,7 @@ export default function App() {
       <Stack.Screen
           name="CartPage"
           component={CartPage}
-          initialParams={{}}
+          //initialParams={{}}
         />
         <Stack.Screen
           name="UserPage"
@@ -44,6 +48,8 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    </CartProvider>
+    </UserProvider>
   );
 }
 
