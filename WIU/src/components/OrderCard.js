@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row", // Change to row to place items side by side
     alignItems: "center", // Align items vertically
-    height: 150,
+    height: 140,
     marginTop: 5,
     width: "100%",
     backgroundColor: "#FFFFFF",
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     height: "100%", // Take up full height of the card
     margin: 1,
     marginBottom: 10,
+    marginRight: 10,
   },
   cardText: {
     width: "50%", // Take up remaining 50% of the width
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
     color: "#000000",
     fontWeight: "bold",
     fontSize: 18,
-    textAlign: "right", // Right align the price
+    textAlign: "left", // Right align the price
   },
   typeFont: {
     color: "#000000",

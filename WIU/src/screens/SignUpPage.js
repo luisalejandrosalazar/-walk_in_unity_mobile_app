@@ -59,6 +59,17 @@ export default function SignUpPage() {
   };
   return (
     <View style={styles.signupPage}>
+      <View style={styles.logoWrapper}>
+        <Image
+          source={require("./../../assets/Logo.png")}
+          style={styles.logo}
+        />
+        <View style={{ marginLeft: 15 }}>
+          <Text style={{ fontSize: 40 }}>Walk-in Unity</Text>
+        </View>
+      </View>
+
+
       <View style={{ marginTop: 20 }}>
         <Text style={styles.label}>First Name:</Text>
         <TextInput
@@ -111,12 +122,6 @@ export default function SignUpPage() {
           <Text style={{ color: "white" }}>Sign Up</Text>
         </View>
       </TouchableOpacity>
-      <Text>or</Text>
-      <TouchableOpacity style={{ marginTop: 25 }} onPress={""}>
-        <View style={styles.signInButton}>
-          <Text style={{ color: "white" }}>Delete user</Text>
-        </View>
-      </TouchableOpacity>
     </View>
   );
 }
@@ -128,6 +133,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#e6e6e6",
     alignItems: "center",
     justifyContent: "center",
+  },
+  logoWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    alignContent: "center",
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  logo: {
+    width: 100,
+    height: 50,
   },
   emailInput: {
     marginTop: 5,

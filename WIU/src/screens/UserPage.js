@@ -57,7 +57,7 @@ export default function UserPage() {
         <View style={styles.container}>
             <View style={styles.CardListWrapper}>
           
-            <View style={{ marginTop: 70, alignItems: "center" }}>
+            <View style={{ marginTop: 40, alignItems: "center" }}>
                 <Icon name="user-circle" size={100} color="#000" />
                 <Text style={styles.headText}>User</Text>
                 <Text style={styles.headEmail}>Email ID:{userEmail}</Text>
@@ -77,6 +77,8 @@ export default function UserPage() {
                     marginRight: 10,
                     alignItems: "center",
                     justifyContent: "center",
+                    marginTop: 5,
+                    marginBottom: 5,
                   }}
           onPress={() => navigation.navigate("LoginPage")}
         >
@@ -110,22 +112,17 @@ export default function UserPage() {
       headText: {
         paddingTop: 10,
         paddingLeft: 5,
-        paddingBottom: 10,
         fontSize: 20,
         fontWeight: 'bold'
       },
       headEmail: {
-        paddingTop: 5,
+        paddingTop: 1,
         paddingLeft: 5,
         paddingBottom: 5,
         fontSize: 20,
         fontWeight: 'bold'
       },
 
-      CardListWrapper: {
-        display: "flex",
-        marginBottom: 1,
-        height: "90.5%",
-      },
+      
 
     });
